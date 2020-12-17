@@ -5,7 +5,7 @@
 2. sklearn（python机器学习库）中文文档 https://sklearn.apachecn.org/
 ###### 逻辑回归（Logistic Regression）
 > 逻辑回归(LR)是用于解决二分类任务的机器学习方法，可以认为得到是1或者0结果。LR在线性回归理论基础上增加Sigmoid函数完成非线性处理。
-> sigmoid函数： 1 / (1 + e^(-x)) 取值范围[0,1]
+> sigmoid函数： 1 / (1 + e^(-x)) 取值范围[0,1] （重点）
 ###### Demo
 > `from sklearn.linear_model import LogisticRegression` 导入逻辑回归模型
 
@@ -46,5 +46,36 @@
 > \# 由于逻辑回归模型是概率预测模型（前文介绍的 p = p(y=1|x,\theta)）,所有我们可以利用 predict_proba 函数预测其概率
 
 > `lr_clf.predict_proba(x_fearures_new1)`
+
+###### 鸢尾花实战
+> \# 导入鸢尾花数据集
+
+> `from sklearn.datasets import load_iris`
+
+> `data = load_iris()`
+
+> `iris_target = data.target`
+
+> \# 使用pandas转化为DataFrame格式
+
+> `iris_features = pd.DataFrame(data=data.data, columns=data.feature_names)`
+
+> \# 查看数据整体信息、查看头部和尾部、对应标签、查看每个类别数量、特征统计描述
+
+> `iris_features.info(), iris_features.head() iris_features.tail(), iris_target, pd.Series(iris_target).value_counts(), pd.Series(iris_target).value_counts()`
+
+> \# 特征与标签组合的图 使用seaborn库
+
+> `import seaborn as sns`
+
+> `sns.pairplot(data=iris_all,diag_kind='hist', hue= 'target')`
+
+> \# 使用plt展示
+
+> `plt.show()`
+
+> \# 进入训练阶段
+
+> `from sklearn.model_selection import train_test_split`
 
 
